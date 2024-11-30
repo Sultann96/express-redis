@@ -13,7 +13,7 @@ client.on('connect', ()=>{
 })
 app.use(express.json());
 
-app.post("/users", async (req, res) => { // changed to async
+app.post("/users", async (req, res) => { 
     const { id, name } = req.body;
 
     if (!id || !name) {
@@ -24,7 +24,7 @@ app.post("/users", async (req, res) => { // changed to async
     const user = { id: userId, name };
 
     try {
-      await client.set(`user:${userId}`, JSON.stringify(user)); // await the operation
+      await client.set(`user:${userId}`, JSON.stringify(user)); 
       res.status(201).json({ message: "ok", user });
     } catch (error) {
       console.error("Ошибка сохранения:", error);
